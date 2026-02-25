@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fafafa;
+    color: #111;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .logo { font-size: 18px; font-weight: 600; color: #111; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #111; }
+
+  /* HERO */
+  .hero {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 60px 80px;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #555;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: #666;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-dark { background: #111; color: #fff; }
+  .btn-dark:hover { background: #333; }
+  .btn-light { background: #fff; color: #111; border: 1px solid #ddd; }
+  .btn-light:hover { background: #f5f5f5; }
+
+  /* WORK */
+  section { padding: 80px 60px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 48px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .card-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+  .card-body { padding: 20px; }
+  .card-tag {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .card-desc { font-size: 13px; color: #777; line-height: 1.5; }
+
+  /* ABOUT */
+  .about-section { background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    margin-bottom: 20px;
+  }
+  .about-left p { font-size: 14px; color: #888; }
+  .about-right h2 { margin-bottom: 16px; }
+  .about-right p { color: #555; font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .skill {
+    background: #f5f5f5;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #444;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    text-align: center;
+    padding: 100px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-section h2 { margin-bottom: 12px; }
+  .contact-section p { color: #666; margin-bottom: 32px; }
+  .email-link {
+    font-size: 20px;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 2px solid #111;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .email-link:hover { opacity: 0.6; }
+  .socials { display: flex; justify-content: center; gap: 24px; margin-top: 36px; }
+  .socials a { color: #999; font-size: 13px; text-decoration: none; transition: color 0.2s; }
+  .socials a:hover { color: #111; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid #eee;
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #999;
+    background: #fff;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    .hero { padding: 60px 24px; }
+    .hero h1 { font-size: 36px; }
+    section { padding: 60px 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+    .contact-section { padding: 60px 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">John Doe</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">👋 Open to opportunities</div>
+  <h1>Designer & Creative Developer</h1>
+  <p>I craft clean, purposeful digital experiences — from brand identities to interactive products.</p>
+  <div class="hero-btns">
+    <a href="#work" class="btn btn-dark">View My Work</a>
+    <a href="#contact" class="btn btn-light">Get in Touch</a>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Selected Work</div>
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-thumb" style="background:#f0f4ff;">🛍️</div>
+      <div class="card-body">
+        <div class="card-tag">E-commerce · UI/UX</div>
+        <div class="card-title">ShopEase App</div>
+        <div class="card-desc">A modern shopping app redesign focused on streamlined checkout and discovery.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-thumb" style="background:#f0fff4;">🌿</div>
+      <div class="card-body">
+        <div class="card-tag">Branding</div>
+        <div class="card-title">Verdant — Brand Identity</div>
+        <div class="card-desc">Complete visual identity for an eco-friendly lifestyle brand.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-thumb" style="background:#fff8f0;">📊</div>
+      <div class="card-body">
+        <div class="card-tag">Dashboard · Web</div>
+        <div class="card-title">Analytics Dashboard</div>
+        <div class="card-desc">Data visualization dashboard for a SaaS platform with real-time metrics.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-thumb" style="background:#fdf0ff;">🎵</div>
+      <div class="card-body">
+        <div class="card-tag">Mobile · UI/UX</div>
+        <div class="card-title">Tune — Music App</div>
+        <div class="card-desc">Minimal music streaming app concept with gesture-based controls.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-thumb" style="background:#fff0f0;">✍️</div>
+      <div class="card-body">
+        <div class="card-tag">Web Design</div>
+        <div class="card-title">Writer's Portfolio</div>
+        <div class="card-desc">Editorial-style portfolio for a freelance journalist and author.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-thumb" style="background:#f0f8ff;">🏠</div>
+      <div class="card-body">
+        <div class="card-tag">Real Estate · Web</div>
+        <div class="card-title">Nestify — Landing Page</div>
+        <div class="card-desc">High-converting landing page for a property listing platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="avatar">👤</div>
+      <p>Based in New York, NY</p>
+    </div>
+    <div class="about-right">
+      <div class="section-label">About Me</div>
+      <h2>A little about me</h2>
+      <p>I'm a product designer with 5+ years of experience helping startups and businesses create intuitive digital products. I care deeply about the details — from pixel-perfect layouts to smooth micro-interactions.</p>
+      <p>When I'm not designing, I enjoy hiking, photography, and experimenting with new tools and technologies.</p>
+      <div class="skills">
+        <span class="skill">Figma</span>
+        <span class="skill">UI Design</span>
+        <span class="skill">UX Research</span>
+        <span class="skill">Branding</span>
+        <span class="skill">Prototyping</span>
+        <span class="skill">HTML / CSS</span>
+        <span class="skill">Webflow</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's work together</h2>
+  <p>Have a project in mind or just want to say hello? My inbox is always open.</p>
+  <a href="mailto:hello@johndoe.com" class="email-link">hello@johndoe.com</a>
+  <div class="socials">
+    <a href="#">Twitter</a>
+    <a href="#">Dribbble</a>
+    <a href="#">Behance</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 John Doe</span>
+  <span>Designed with care</span>
+</footer>
+
+</body>
+</html>
